@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="26">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>13</ID>
+      <Description>"X Axis"</Description>
+      <LastState Value="-4320.304688" RealAddress="272189C4"/>
+      <VariableType>Float</VariableType>
+      <Address>"WoW.exe"+0087BCD4</Address>
+      <Offsets>
+        <Offset>2A8</Offset>
+        <Offset>C</Offset>
+        <Offset>708</Offset>
+        <Offset>28</Offset>
+        <Offset>88</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>19</ID>
+      <Description>"Y Axis"</Description>
+      <LastState Value="-679.8668213" RealAddress="272189C0"/>
+      <VariableType>Float</VariableType>
+      <Address>"WoW.exe"+000AE4EC</Address>
+      <Offsets>
+        <Offset>2C8</Offset>
+        <Offset>C</Offset>
+        <Offset>120</Offset>
+        <Offset>5C4</Offset>
+        <Offset>68</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Z Axis"</Description>
+      <LastState Value="46.89707565" RealAddress="272189C8"/>
+      <VariableType>Float</VariableType>
+      <Address>"WoW.exe"+000AE4EC</Address>
+      <Offsets>
+        <Offset>318</Offset>
+        <Offset>C</Offset>
+        <Offset>C</Offset>
+        <Offset>690</Offset>
+        <Offset>68</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>22</ID>
+      <Description>"Rotation"</Description>
+      <LastState Value="1.505180955" RealAddress="272189CC"/>
+      <VariableType>Float</VariableType>
+      <Address>"WoW.exe"+000AE4EC</Address>
+      <Offsets>
+        <Offset>2F8</Offset>
+        <Offset>0</Offset>
+        <Offset>3C</Offset>
+        <Offset>690</Offset>
+        <Offset>68</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>28</ID>
+      <Description>"Speed"</Description>
+      <LastState Value="0" RealAddress="27218A34"/>
+      <VariableType>Float</VariableType>
+      <Address>"WoW.exe"+000AE4EC</Address>
+      <Offsets>
+        <Offset>33C</Offset>
+        <Offset>C</Offset>
+        <Offset>3C</Offset>
+        <Offset>6A8</Offset>
+        <Offset>68</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>32</ID>
+      <Description>"Levitate or Freeze"</Description>
+      <LastState Value="0" RealAddress="272189F0"/>
+      <VariableType>Float</VariableType>
+      <Address>"WoW.exe"+000AE4EC</Address>
+      <Offsets>
+        <Offset>334</Offset>
+        <Offset>C</Offset>
+        <Offset>C</Offset>
+        <Offset>69C</Offset>
+        <Offset>68</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>33</ID>
+      <Description>"CorpseX"</Description>
+      <LastState Value="0" RealAddress="00B4E284"/>
+      <VariableType>Float</VariableType>
+      <Address>00B4E284</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>34</ID>
+      <Description>"CorpseY"</Description>
+      <LastState Value="0" RealAddress="00B4E288"/>
+      <VariableType>Float</VariableType>
+      <Address>00B4E288</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>35</ID>
+      <Description>"CorpseZ"</Description>
+      <LastState Value="0" RealAddress="00B4E28C"/>
+      <VariableType>Float</VariableType>
+      <Address>00B4E28C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>36</ID>
+      <Description>"No description"</Description>
+      <LastState Value="-4320.304688" RealAddress="00C7B548"/>
+      <VariableType>Float</VariableType>
+      <Address>00C7B548</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>37</ID>
+      <Description>"No description"</Description>
+      <LastState Value="-679.8668213" RealAddress="00C7B544"/>
+      <VariableType>Float</VariableType>
+      <Address>00C7B544</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>38</ID>
+      <Description>"No description"</Description>
+      <LastState Value="46.89707565" RealAddress="00C7B54C"/>
+      <VariableType>Float</VariableType>
+      <Address>00C7B54C</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <Comments>Info about this table:
+</Comments>
+</CheatTable>
