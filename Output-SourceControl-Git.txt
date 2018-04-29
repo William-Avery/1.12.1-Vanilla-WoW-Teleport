@@ -1,0 +1,11 @@
+﻿A new Git repository has been created for you in C:\Users\william.avery\Source\Repos\Tremor.
+Opening repositories:
+C:\Users\william.avery\Source\Repos\Tremor
+Commit 7aabe9d3 created locally in repository C:\Users\william.avery\Source\Repos\Tremor
+Error encountered while pushing branch to the remote repository: Git failed with a fatal error.
+HttpRequestException encountered.
+   An error occurred while sending the request.
+cannot spawn askpass: No such file or directory
+could not read Username for 'https://github.com': terminal prompts disabled
+Pushing to https://github.com/knif3r2/1.12.1-Vanilla-WoW-Teleport.git
+
