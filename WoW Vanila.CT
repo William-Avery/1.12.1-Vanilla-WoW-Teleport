@@ -4,7 +4,6 @@
     <CheatEntry>
       <ID>13</ID>
       <Description>"X Axis"</Description>
-      <LastState Value="-4320.304688" RealAddress="272189C4"/>
       <VariableType>Float</VariableType>
       <Address>"WoW.exe"+0087BCD4</Address>
       <Offsets>
@@ -16,37 +15,34 @@
       </Offsets>
     </CheatEntry>
     <CheatEntry>
-      <ID>19</ID>
+      <ID>40</ID>
       <Description>"Y Axis"</Description>
-      <LastState Value="-679.8668213" RealAddress="272189C0"/>
       <VariableType>Float</VariableType>
-      <Address>"WoW.exe"+000AE4EC</Address>
+      <Address>"WoW.exe"+0087BCD4</Address>
       <Offsets>
         <Offset>2C8</Offset>
-        <Offset>C</Offset>
-        <Offset>120</Offset>
-        <Offset>5C4</Offset>
-        <Offset>68</Offset>
+        <Offset>3C</Offset>
+        <Offset>6B4</Offset>
+        <Offset>28</Offset>
+        <Offset>88</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
-      <ID>0</ID>
+      <ID>42</ID>
       <Description>"Z Axis"</Description>
-      <LastState Value="46.89707565" RealAddress="272189C8"/>
       <VariableType>Float</VariableType>
-      <Address>"WoW.exe"+000AE4EC</Address>
+      <Address>"WoW.exe"+0087BCD4</Address>
       <Offsets>
-        <Offset>318</Offset>
-        <Offset>C</Offset>
-        <Offset>C</Offset>
-        <Offset>690</Offset>
-        <Offset>68</Offset>
+        <Offset>54</Offset>
+        <Offset>1A4</Offset>
+        <Offset>7C8</Offset>
+        <Offset>28</Offset>
+        <Offset>88</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
       <ID>22</ID>
       <Description>"Rotation"</Description>
-      <LastState Value="1.505180955" RealAddress="272189CC"/>
       <VariableType>Float</VariableType>
       <Address>"WoW.exe"+000AE4EC</Address>
       <Offsets>
@@ -60,7 +56,6 @@
     <CheatEntry>
       <ID>28</ID>
       <Description>"Speed"</Description>
-      <LastState Value="0" RealAddress="27218A34"/>
       <VariableType>Float</VariableType>
       <Address>"WoW.exe"+000AE4EC</Address>
       <Offsets>
@@ -74,7 +69,6 @@
     <CheatEntry>
       <ID>32</ID>
       <Description>"Levitate or Freeze"</Description>
-      <LastState Value="0" RealAddress="272189F0"/>
       <VariableType>Float</VariableType>
       <Address>"WoW.exe"+000AE4EC</Address>
       <Offsets>
@@ -108,27 +102,73 @@
     </CheatEntry>
     <CheatEntry>
       <ID>36</ID>
-      <Description>"No description"</Description>
-      <LastState Value="-4320.304688" RealAddress="00C7B548"/>
+      <Description>"Readable X"</Description>
+      <LastState Value="0" RealAddress="00C7B548"/>
       <VariableType>Float</VariableType>
       <Address>00C7B548</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>37</ID>
-      <Description>"No description"</Description>
-      <LastState Value="-679.8668213" RealAddress="00C7B544"/>
+      <Description>"Readable Y"</Description>
+      <LastState Value="0" RealAddress="00C7B544"/>
       <VariableType>Float</VariableType>
       <Address>00C7B544</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>38</ID>
-      <Description>"No description"</Description>
-      <LastState Value="46.89707565" RealAddress="00C7B54C"/>
+      <Description>"Readable Z"</Description>
+      <LastState Value="0" RealAddress="00C7B54C"/>
       <VariableType>Float</VariableType>
       <Address>00C7B54C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>43</ID>
+      <Description>"AntiRoot On: { 0xEB, 0xF9 } - Off: { 0x8A, 0x47 }"</Description>
+      <LastState Value="8A 47 4D 84 C0 74 17 8B 86 A4" RealAddress="006163DB"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>10</ByteLength>
+      <Address>006163DB</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>44</ID>
+      <Description>"Wall Climb"</Description>
+      <LastState Value="0.6427876353" RealAddress="0080DFFC"/>
+      <VariableType>Float</VariableType>
+      <Address>0080DFFC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>45</ID>
+      <Description>"Jump Gravity"</Description>
+      <LastState Value="-7.955547333" RealAddress="007C6272"/>
+      <VariableType>Float</VariableType>
+      <Address>007C6272</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>47</ID>
+      <Description>"NoFallDamage  On: { 0x31, 0xC9, 0x90 } - Off: { 0x8B, 0x4F, 0x78 }"</Description>
+      <LastState Value="8B 4F 78 89 4E 38 5B 74 1E 8B" RealAddress="007C63DA"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>10</ByteLength>
+      <Address>007C63DA</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>46</ID>
+      <Description>"Ingame or Not"</Description>
+      <LastState Value="0" RealAddress="00B4B424"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00B4B424</Address>
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>
   <Comments>Info about this table:
 </Comments>
+  <DisassemblerComments>
+    <DisassemblerComment>
+      <Address>"MSVBVM60.DLL"+10196F</Address>
+      <Comment>Y AXIS
+</Comment>
+    </DisassemblerComment>
+  </DisassemblerComments>
 </CheatTable>
