@@ -409,6 +409,7 @@
             this.b_delete.TabIndex = 9;
             this.b_delete.Text = "Delete Selected";
             this.b_delete.UseVisualStyleBackColor = true;
+            this.b_delete.Click += new System.EventHandler(this.b_delete_Click);
             // 
             // Form1
             // 

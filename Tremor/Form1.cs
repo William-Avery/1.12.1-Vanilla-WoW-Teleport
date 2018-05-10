@@ -440,6 +440,11 @@ namespace Tremor
             //lv_maps.SelectedItems.Clear();
            // lv_copper.SelectedItems.Clear();
         }
+
+        private void b_delete_Click(object sender, EventArgs e)
+        {
+            //this is the best
+        }
     }
 
     class Data
