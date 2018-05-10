@@ -13,6 +13,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 using Vanilla.CheatEngine;
 
 namespace Tremor
@@ -69,52 +71,74 @@ namespace Tremor
             DefaultLocations = new DataTable();
             PlayerLocations = new DataTable();
 
+            DefaultLocations.Columns.Add("ID", typeof(string));
             DefaultLocations.Columns.Add("Name", typeof(string));
             DefaultLocations.Columns.Add("X", typeof(float));
             DefaultLocations.Columns.Add("Y", typeof(float));
             DefaultLocations.Columns.Add("Z", typeof(float));
             DefaultLocations.Columns.Add("Map", typeof(int));
 
-            DefaultLocations.Rows.Add("Stormwind", "554.633", "-8913.23", "94.7944", "0");
+            PopulateSites();
 
             lv_maps.View = View.Details;
+            lv_maps.Columns.Add("ID");
             lv_maps.Columns.Add("Name");
             lv_maps.Columns.Add("X");
             lv_maps.Columns.Add("Y");
             lv_maps.Columns.Add("Z");
             lv_maps.Columns.Add("Map");
 
+            lv_copper.View = View.Details;
+            lv_copper.Columns.Add("ID");
+            lv_copper.Columns.Add("Name");
+            lv_copper.Columns.Add("X");
+            lv_copper.Columns.Add("Y");
+            lv_copper.Columns.Add("Z");
+            lv_copper.Columns.Add("Map");
+
+            lv_maps.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            lv_maps.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            lv_copper.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            lv_copper.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
             tb_mapsearch.TextChanged += new EventHandler(tb_mapsearch_TextChanged);
-
-            PopulateMapList();
         }
 
-        private void PopulateMapList()
+        private void PopulateSites()
         {
-            lv_maps.Items.Clear(); //Clear all the Data in the ListView
-
-            foreach (DataRow row in DefaultLocations.Rows)
+            //Generate HordeSafe Tab
+            XmlDocument doc = new XmlDocument();
+            doc.Load("HordeSafe.xml");
+            XmlNodeList nodeList = doc.SelectNodes("/locations/safehorde/location");
+            foreach (XmlNode node in nodeList)
             {
+                var id = node.SelectSingleNode("ID").InnerText; //ID
+                var name = node.SelectSingleNode("Name").InnerText; //Name
+                var x = node.SelectSingleNode("X").InnerText; //X
+                var y = node.SelectSingleNode("Y").InnerText; //Y
+                var z = node.SelectSingleNode("Z").InnerText; //Z
+                var map = node.SelectSingleNode("MAP").InnerText; //Map
+                string[] row = { id, name, x, y, z, map };
+                var listViewItem = new ListViewItem(row);
+                lv_maps.Items.Add(listViewItem);
+            }
 
-                if (row["Name"].ToString().StartsWith(tb_mapsearch.Text)) //If the cell value is start with the value in the TextBox
-                {
-                    ListViewItem item = new ListViewItem(row["Name"].ToString());
-
-                    item.SubItems.Add(row["Name"].ToString());
-
-                    lv_maps.Items.Add(item); //Add this row to the ListView
-                }
+            doc.Load("CopperOre.xml");
+            nodeList = doc.SelectNodes("/locations/location");
+            foreach (XmlNode node in nodeList)
+            {
+                var id = node.SelectSingleNode("ID").InnerText; //ID
+                var name = node.SelectSingleNode("Name").InnerText; //Name
+                var x = node.SelectSingleNode("X").InnerText; //X
+                var y = node.SelectSingleNode("Y").InnerText; //Y
+                var z = node.SelectSingleNode("Z").InnerText; //Z
+                var map = node.SelectSingleNode("Map").InnerText; //Map
+                string[] row = { id, name, x, y, z, map };
+                var listViewItem = new ListViewItem(row);
+                lv_copper.Items.Add(listViewItem);
             }
         }
-
-        private void PopulatePlayerList()
-        {
-            // adding initial data
-           // lv_maps.Items.Clear();
-            //lv_maps.Items.AddRange(PlayerLocations.Select(c => new ListViewItem(c.Name)).ToArray());
-        }
-
+ 
         private void AddPlayerLocation()
         {
             Process[] p = Process.GetProcessesByName("WoW");
@@ -164,42 +188,82 @@ namespace Tremor
 
         }
 
-        //IntPtr address = memory.GetAddress("\"WoW.exe\"+000AE4EC+68+5C4+120+C+2C8");
+        /// <summary>
+        /// Teleports on click to selected row. Varries on tab selected.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void b_teleport_Click(object sender, EventArgs e)
         {
-            if (lv_maps.SelectedItems.Count > 0)
+            if (tabControl2.SelectedTab == tabControl2.TabPages["tab1"])//your specific tabname
             {
-                var item = lv_maps.SelectedItems[0].Text;
-                Console.WriteLine(item);
-
-                Process[] p = Process.GetProcessesByName("WoW");
-                Console.WriteLine(p[0]);
-                uint DELETE = 0x00010000;
-                uint READ_CONTROL = 0x00020000;
-                uint WRITE_DAC = 0x00040000;
-                uint WRITE_OWNER = 0x00080000;
-                uint SYNCHRONIZE = 0x00100000;
-                uint END = 0xFFF; //if you have Windows XP or Windows Server 2003 you must change this to 0xFFFF
-                uint PROCESS_ALL_ACCESS = (DELETE | READ_CONTROL | WRITE_DAC | WRITE_OWNER | SYNCHRONIZE | END);
-
-                int processHandle = OpenProcess(PROCESS_ALL_ACCESS, false, p[0].Id);
-                int processSize = GetObjectSize("12");
-
-                float x = (float)-4332.891113;
-                float y = (float)-761.9750366;
-                float z = (float)53.79263687;
-
-                using (Memory memory = new Memory(processes[0]))
+                if (lv_maps.SelectedItems.Count > 0)
                 {
-                    IntPtr addressy = memory.GetAddress("\"WoW.exe\"+0087BCD4+88+28+6B4+3C+2C8");
-                    IntPtr addressx = memory.GetAddress("\"WoW.exe\"+0087BCD4+88+28+708+C+2A8");
-                    IntPtr addressz = memory.GetAddress("\"WoW.exe\"+0087BCD4+88+28+7C8+1A4+54");
+                    ListViewItem selectedItem = lv_maps.SelectedItems[0];
+                    var x = Convert.ToSingle(selectedItem.SubItems[2].Text);
+                    var y = Convert.ToSingle(selectedItem.SubItems[3].Text);
+                    var z = Convert.ToSingle(selectedItem.SubItems[4].Text);
 
-                    memory.WriteFloat(addressx, x);
-                    memory.WriteFloat(addressy, y);
-                    memory.WriteFloat(addressz, z);
+                    Process[] p = Process.GetProcessesByName("WoW");
+                    Console.WriteLine(p[0]);
+                    uint DELETE = 0x00010000;
+                    uint READ_CONTROL = 0x00020000;
+                    uint WRITE_DAC = 0x00040000;
+                    uint WRITE_OWNER = 0x00080000;
+                    uint SYNCHRONIZE = 0x00100000;
+                    uint END = 0xFFF; //if you have Windows XP or Windows Server 2003 you must change this to 0xFFFF
+                    uint PROCESS_ALL_ACCESS = (DELETE | READ_CONTROL | WRITE_DAC | WRITE_OWNER | SYNCHRONIZE | END);
+
+                    int processHandle = OpenProcess(PROCESS_ALL_ACCESS, false, p[0].Id);
+                    int processSize = GetObjectSize("12");
+
+                    using (Memory memory = new Memory(processes[0]))
+                    {
+                        IntPtr addressy = memory.GetAddress("\"WoW.exe\"+0087BCD4+88+28+6B4+3C+2C8");
+                        IntPtr addressx = memory.GetAddress("\"WoW.exe\"+0087BCD4+88+28+708+C+2A8");
+                        IntPtr addressz = memory.GetAddress("\"WoW.exe\"+0087BCD4+88+28+7C8+1A4+54");
+
+                        memory.WriteFloat(addressx, x);
+                        memory.WriteFloat(addressy, y);
+                        memory.WriteFloat(addressz, z);
+                    }
                 }
-            }       
+            }
+
+            if (tabControl2.SelectedTab == tabControl2.TabPages["tab2"])//your specific tabname
+            {
+                if (lv_copper.SelectedItems.Count > 0)
+                {
+                    ListViewItem selectedItem = lv_copper.SelectedItems[0];
+                    var x = Convert.ToSingle(selectedItem.SubItems[2].Text);
+                    var y = Convert.ToSingle(selectedItem.SubItems[3].Text);
+                    var z = Convert.ToSingle(selectedItem.SubItems[4].Text);
+
+                    Process[] p = Process.GetProcessesByName("WoW");
+                    Console.WriteLine(p[0]);
+                    uint DELETE = 0x00010000;
+                    uint READ_CONTROL = 0x00020000;
+                    uint WRITE_DAC = 0x00040000;
+                    uint WRITE_OWNER = 0x00080000;
+                    uint SYNCHRONIZE = 0x00100000;
+                    uint END = 0xFFF; //if you have Windows XP or Windows Server 2003 you must change this to 0xFFFF
+                    uint PROCESS_ALL_ACCESS = (DELETE | READ_CONTROL | WRITE_DAC | WRITE_OWNER | SYNCHRONIZE | END);
+
+                    int processHandle = OpenProcess(PROCESS_ALL_ACCESS, false, p[0].Id);
+                    int processSize = GetObjectSize("12");
+
+                    using (Memory memory = new Memory(processes[0]))
+                    {
+                        IntPtr addressy = memory.GetAddress("\"WoW.exe\"+0087BCD4+88+28+6B4+3C+2C8");
+                        IntPtr addressx = memory.GetAddress("\"WoW.exe\"+0087BCD4+88+28+708+C+2A8");
+                        IntPtr addressz = memory.GetAddress("\"WoW.exe\"+0087BCD4+88+28+7C8+1A4+54");
+
+                        memory.WriteFloat(addressx, x);
+                        memory.WriteFloat(addressy, y);
+                        memory.WriteFloat(addressz, z);
+                    }
+                }
+            }
         }
 
         private static IntPtr GetModuleBaseAddress(string AppName, string ModuleName)
@@ -282,18 +346,7 @@ namespace Tremor
 
         private void b_addcurrent_Click(object sender, EventArgs e)
         {
-            if (tb_telename.Text == "")
-            {
-                SystemSounds.Beep.Play();
-                tb_error_save.ForeColor = Color.Red;
-                tb_error_save.Text = "Must enter name to save!";
-                return;
-            }
-            else
-            {
-                tb_error_save.Text = "";
-                AddPlayerLocation();
-            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -340,9 +393,12 @@ namespace Tremor
 
         private void tb_mapsearch_TextChanged(object sender, EventArgs e)
         {
-            PopulateMapList();
+            //lv_maps.Items.Clear(); //Clear all the Data in the ListView
+            //var results = listView1.Items.Where(x => x.All(y => y.StartsWith(filesearch)));
+            //foreach (var item in results)
+            //{
+            //}
         }
-
         private void b_manual_Click(object sender, EventArgs e)
         {
             Process[] p = Process.GetProcessesByName("WoW");
@@ -373,9 +429,18 @@ namespace Tremor
                 memory.WriteFloat(addressz, z);
             }
         }
+
+        /// <summary>
+        /// Clears selected rows on tab switch.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //lv_maps.SelectedItems.Clear();
+           // lv_copper.SelectedItems.Clear();
+        }
     }
-
-
 
     class Data
     {

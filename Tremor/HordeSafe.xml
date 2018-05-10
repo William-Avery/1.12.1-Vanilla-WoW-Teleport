@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<locations>
+  <safehorde>
+
+    <location>
+      <ID>1</ID>
+      <Name>Razor Hill - Inn</Name>
+      <X>-4661.959473</X>
+      <Y>357.1793823</Y>
+      <Z>16.75229454</Z>
+      <MAP>1</MAP>
+    </location>
+
+    <location>
+      <ID>2</ID>
+      <Name>Ogrimmar - Valley of Strength</Name>
+      <X>-4476.410156</X>
+      <Y>1588.804688</Y>
+      <Z>24.11726761</Z>
+      <MAP>1</MAP>
+    </location>
+
+    <location>
+      <ID>3</ID>
+      <Name>Ogrimmar - Cleft of Shadow</Name>
+      <X>-4364.808594</X>
+      <Y>1857.662354</Y>
+      <Z>-14.98716164</Z>
+      <MAP>1</MAP>
+    </location>
+
+    <location>
+      <ID>4</ID>
+      <Name>Far Watch Post</Name>
+      <X>-3682.84668</X>
+      <Y>251.3223877</Y>
+      <Z>48.00426865</Z>
+      <MAP>1</MAP>
+    </location>
+
+    <location>
+      <ID>5</ID>
+      <Name>Grol'dom Farm</Name>
+      <X>-3038.762451</X>
+      <Y>275.9581299</Y>
+      <Z>97.62072754</Z>
+      <MAP>1</MAP>
+    </location>
+
+    <location>
+      <ID>6</ID>
+      <Name>Shrine of the Dormant Flame</Name>
+      <X>-3974.117676</X>
+      <Y>-250.4742126</Y>
+      <Z>166.9586334</Z>
+      <MAP>1</MAP>
+    </location>
+
+    <location>
+      <ID>7</ID>
+      <Name>Crossroads</Name>
+      <X>-2639.098145</X>
+      <Y>-375.4316101</Y>
+      <Z>95.8727417</Z>
+      <MAP>1</MAP>
+    </location>
+
+    <location>
+      <ID>8</ID>
+      <Name>The Forgotten Pools</Name>
+      <X>-1875.857422</X>
+      <Y>196.6912231</Y>
+      <Z>96.20895386</Z>
+      <MAP>1</MAP>
+    </location>
+
+    <location>
+      <ID>9</ID>
+      <Name>Thunderbluff</Name>
+      <X>14.12805748</X>
+      <Y>-1250.28064</Y>
+      <Z>130.3449707</Z>
+      <MAP>1</MAP>
+    </location>
+
+    <location>
+      <ID>10</ID>
+      <Name>The Stagnant Oasis</Name>
+      <X>-3012.218506</X>
+      <Y>-1122.286255</Y>
+      <Z>95.05072784</Z>
+      <MAP>1</MAP>
+    </location>
+
+    <location>
+      <ID>11</ID>
+      <Name></Name>
+      <X></X>
+      <Y></Y>
+      <Z></Z>
+      <MAP></MAP>
+    </location>
+
+    <location>
+      <ID>12</ID>
+      <Name></Name>
+      <X></X>
+      <Y></Y>
+      <Z></Z>
+      <MAP></MAP>
+    </location>
+ 
+  </safehorde>
+</locations>
