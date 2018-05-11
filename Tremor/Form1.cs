@@ -418,7 +418,8 @@ namespace Tremor
                 var map = node.SelectSingleNode("Map").InnerText; //Map
                 string[] row = { id, name, _x, _y, _z, map };
                 var listViewItem = new ListViewItem(row);
-                lv_copper.Items.Add(listViewItem);
+                lv_copper.Items.Add(listViewItem);//asdasd
+                var a = "sad";
             }
         }
 
