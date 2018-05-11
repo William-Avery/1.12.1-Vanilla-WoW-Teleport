@@ -66,6 +66,8 @@ namespace Tremor
         private void Form1_Load(object sender, EventArgs e)
         {
             lv_maps.GridLines = true;
+            lv_copper.GridLines = true;
+            lv_player.GridLines = true;
 
             lv_maps.Items.Clear();
             DefaultLocations = new DataTable();
@@ -96,10 +98,20 @@ namespace Tremor
             lv_copper.Columns.Add("Z");
             lv_copper.Columns.Add("Map");
 
+            lv_player.View = View.Details;
+            lv_player.Columns.Add("ID");
+            lv_player.Columns.Add("Name");
+            lv_player.Columns.Add("X");
+            lv_player.Columns.Add("Y");
+            lv_player.Columns.Add("Z");
+            lv_player.Columns.Add("Map");
+
             lv_maps.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             lv_maps.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             lv_copper.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             lv_copper.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            lv_player.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            lv_player.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
             tb_mapsearch.TextChanged += new EventHandler(tb_mapsearch_TextChanged);
         }
@@ -124,6 +136,21 @@ namespace Tremor
             }
 
             doc.Load("CopperOre.xml");
+            nodeList = doc.SelectNodes("/locations/location");
+            foreach (XmlNode node in nodeList)
+            {
+                var id = node.SelectSingleNode("ID").InnerText; //ID
+                var name = node.SelectSingleNode("Name").InnerText; //Name
+                var x = node.SelectSingleNode("X").InnerText; //X
+                var y = node.SelectSingleNode("Y").InnerText; //Y
+                var z = node.SelectSingleNode("Z").InnerText; //Z
+                var map = node.SelectSingleNode("Map").InnerText; //Map
+                string[] row = { id, name, x, y, z, map };
+                var listViewItem = new ListViewItem(row);
+                lv_copper.Items.Add(listViewItem);
+            }
+
+            doc.Load("Player.xml");
             nodeList = doc.SelectNodes("/locations/location");
             foreach (XmlNode node in nodeList)
             {
@@ -162,14 +189,8 @@ namespace Tremor
                 IntPtr spotz = memory.GetAddress("00C7B54C");
                 float x = Convert.ToSingle(memory.ReadFloat(spotx));
                 float y = Convert.ToSingle(memory.ReadFloat(spoty));
-                float z = Convert.ToSingle(memory.ReadFloat(spotz));
-
-               // PlayerLocations.Add(new Data() { Name = tb_telename.Text, Y = Convert.ToString(y), X = Convert.ToString(x), Z = Convert.ToString(z), Map = "0" });
+                float z = Convert.ToSingle(memory.ReadFloat(spotz));   
             }
-
-            // get initial data
-            lv_maps.Items.Clear();
-           // lv_maps.Items.AddRange(PlayerLocations.Select(c => new ListViewItem(c.Name)).ToArray());
         }
 
         private void lv_maps_SelectedIndexChanged(object sender, EventArgs e)
@@ -346,7 +367,59 @@ namespace Tremor
 
         private void b_addcurrent_Click(object sender, EventArgs e)
         {
+            float x;
+            float y;
+            float z;
 
+            Process[] p = Process.GetProcessesByName("WoW");
+            Console.WriteLine(p[0]);
+            uint DELETE = 0x00010000;
+            uint READ_CONTROL = 0x00020000;
+            uint WRITE_DAC = 0x00040000;
+            uint WRITE_OWNER = 0x00080000;
+            uint SYNCHRONIZE = 0x00100000;
+            uint END = 0xFFF; //if you have Windows XP or Windows Server 2003 you must change this to 0xFFFF
+            uint PROCESS_ALL_ACCESS = (DELETE | READ_CONTROL | WRITE_DAC | WRITE_OWNER | SYNCHRONIZE | END);
+
+            int processHandle = OpenProcess(PROCESS_ALL_ACCESS, false, p[0].Id);
+            int processSize = GetObjectSize("12");
+
+            using (Memory memory = new Memory(processes[0]))
+            {
+                // Read Current Location
+                IntPtr spotx = memory.GetAddress("00C7B548");
+                IntPtr spoty = memory.GetAddress("00C7B544");
+                IntPtr spotz = memory.GetAddress("00C7B54C");
+                x = Convert.ToSingle(memory.ReadFloat(spotx));
+                y = Convert.ToSingle(memory.ReadFloat(spoty));
+                z = Convert.ToSingle(memory.ReadFloat(spotz));
+                // PlayerLocations.Add(new Data() { Name = tb_telename.Text, Y = Convert.ToString(y), X = Convert.ToString(x), Z = Convert.ToString(z), Map = "0" });
+            }
+            XDocument doc = XDocument.Load("Player.xml");
+            XElement location = doc.Element("locations");
+            location.Add(new XElement("ID",
+                       new XElement("Name", tb_telename.Text),
+                       new XElement("X", x),
+                       new XElement("Y", y),
+                       new XElement("Z", z),
+                       new XElement("Map", "1")));
+            doc.Save("Player.xml");
+
+            lv_player.Items.Clear();
+            XmlDocument docx = new XmlDocument();
+            XmlNodeList nodeList = docx.SelectNodes("/locations/location");
+            foreach (XmlNode node in nodeList)
+            {
+                var id = node.SelectSingleNode("ID").InnerText; //ID
+                var name = node.SelectSingleNode("Name").InnerText; //Name
+                var _x = node.SelectSingleNode("X").InnerText; //X
+                var _y = node.SelectSingleNode("Y").InnerText; //Y
+                var _z = node.SelectSingleNode("Z").InnerText; //Z
+                var map = node.SelectSingleNode("Map").InnerText; //Map
+                string[] row = { id, name, _x, _y, _z, map };
+                var listViewItem = new ListViewItem(row);
+                lv_copper.Items.Add(listViewItem);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

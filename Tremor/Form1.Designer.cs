@@ -61,8 +61,9 @@
             this.tab2 = new System.Windows.Forms.TabPage();
             this.lv_copper = new System.Windows.Forms.ListView();
             this.tab3 = new System.Windows.Forms.TabPage();
-            this.tab4 = new System.Windows.Forms.TabPage();
             this.b_delete = new System.Windows.Forms.Button();
+            this.lv_player = new System.Windows.Forms.ListView();
+            this.tab4 = new System.Windows.Forms.TabPage();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -71,6 +72,7 @@
             this.tabControl2.SuspendLayout();
             this.tab1.SuspendLayout();
             this.tab2.SuspendLayout();
+            this.tab4.SuspendLayout();
             this.SuspendLayout();
             // 
             // lv_maps
@@ -80,7 +82,7 @@
             this.lv_maps.Location = new System.Drawing.Point(3, 3);
             this.lv_maps.MultiSelect = false;
             this.lv_maps.Name = "lv_maps";
-            this.lv_maps.Size = new System.Drawing.Size(251, 345);
+            this.lv_maps.Size = new System.Drawing.Size(334, 174);
             this.lv_maps.TabIndex = 0;
             this.lv_maps.UseCompatibleStateImageBehavior = false;
             this.lv_maps.View = System.Windows.Forms.View.Details;
@@ -164,7 +166,7 @@
             // tb_z
             // 
             this.tb_z.AutoSize = true;
-            this.tb_z.Location = new System.Drawing.Point(86, 143);
+            this.tb_z.Location = new System.Drawing.Point(51, 135);
             this.tb_z.Name = "tb_z";
             this.tb_z.Size = new System.Drawing.Size(13, 13);
             this.tb_z.TabIndex = 8;
@@ -173,7 +175,7 @@
             // tb_y
             // 
             this.tb_y.AutoSize = true;
-            this.tb_y.Location = new System.Drawing.Point(86, 130);
+            this.tb_y.Location = new System.Drawing.Point(51, 122);
             this.tb_y.Name = "tb_y";
             this.tb_y.Size = new System.Drawing.Size(13, 13);
             this.tb_y.TabIndex = 7;
@@ -182,7 +184,7 @@
             // tb_x
             // 
             this.tb_x.AutoSize = true;
-            this.tb_x.Location = new System.Drawing.Point(86, 117);
+            this.tb_x.Location = new System.Drawing.Point(51, 109);
             this.tb_x.Name = "tb_x";
             this.tb_x.Size = new System.Drawing.Size(13, 13);
             this.tb_x.TabIndex = 6;
@@ -191,7 +193,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(64, 143);
+            this.label4.Location = new System.Drawing.Point(29, 135);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(16, 13);
             this.label4.TabIndex = 5;
@@ -200,7 +202,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(64, 130);
+            this.label3.Location = new System.Drawing.Point(29, 122);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(15, 13);
             this.label3.TabIndex = 4;
@@ -209,7 +211,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(64, 117);
+            this.label2.Location = new System.Drawing.Point(29, 109);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(16, 13);
             this.label2.TabIndex = 3;
@@ -241,7 +243,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(376, 482);
+            this.tabControl1.Size = new System.Drawing.Size(377, 482);
             this.tabControl1.TabIndex = 7;
             // 
             // tabPage1
@@ -254,7 +256,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(368, 456);
+            this.tabPage1.Size = new System.Drawing.Size(369, 456);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Auto";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -353,7 +355,7 @@
             this.tab1.Location = new System.Drawing.Point(4, 22);
             this.tab1.Name = "tab1";
             this.tab1.Padding = new System.Windows.Forms.Padding(3);
-            this.tab1.Size = new System.Drawing.Size(257, 351);
+            this.tab1.Size = new System.Drawing.Size(340, 180);
             this.tab1.TabIndex = 0;
             this.tab1.Text = "Horde - Safe";
             this.tab1.UseVisualStyleBackColor = true;
@@ -386,20 +388,10 @@
             this.tab3.Location = new System.Drawing.Point(4, 22);
             this.tab3.Name = "tab3";
             this.tab3.Padding = new System.Windows.Forms.Padding(3);
-            this.tab3.Size = new System.Drawing.Size(257, 351);
+            this.tab3.Size = new System.Drawing.Size(340, 180);
             this.tab3.TabIndex = 2;
             this.tab3.Text = "Tin";
             this.tab3.UseVisualStyleBackColor = true;
-            // 
-            // tab4
-            // 
-            this.tab4.Location = new System.Drawing.Point(4, 22);
-            this.tab4.Name = "tab4";
-            this.tab4.Padding = new System.Windows.Forms.Padding(3);
-            this.tab4.Size = new System.Drawing.Size(340, 180);
-            this.tab4.TabIndex = 3;
-            this.tab4.Text = "Player";
-            this.tab4.UseVisualStyleBackColor = true;
             // 
             // b_delete
             // 
@@ -411,11 +403,34 @@
             this.b_delete.UseVisualStyleBackColor = true;
             this.b_delete.Click += new System.EventHandler(this.b_delete_Click);
             // 
+            // lv_player
+            // 
+            this.lv_player.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lv_player.FullRowSelect = true;
+            this.lv_player.Location = new System.Drawing.Point(3, 3);
+            this.lv_player.MultiSelect = false;
+            this.lv_player.Name = "lv_player";
+            this.lv_player.Size = new System.Drawing.Size(334, 174);
+            this.lv_player.TabIndex = 8;
+            this.lv_player.UseCompatibleStateImageBehavior = false;
+            this.lv_player.View = System.Windows.Forms.View.Details;
+            // 
+            // tab4
+            // 
+            this.tab4.Controls.Add(this.lv_player);
+            this.tab4.Location = new System.Drawing.Point(4, 22);
+            this.tab4.Name = "tab4";
+            this.tab4.Padding = new System.Windows.Forms.Padding(3);
+            this.tab4.Size = new System.Drawing.Size(340, 180);
+            this.tab4.TabIndex = 3;
+            this.tab4.Text = "Player";
+            this.tab4.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(372, 473);
+            this.ClientSize = new System.Drawing.Size(368, 473);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Form1";
@@ -432,6 +447,7 @@
             this.tabControl2.ResumeLayout(false);
             this.tab1.ResumeLayout(false);
             this.tab2.ResumeLayout(false);
+            this.tab4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -470,8 +486,9 @@
         private System.Windows.Forms.TabPage tab2;
         private System.Windows.Forms.ListView lv_copper;
         private System.Windows.Forms.TabPage tab3;
-        private System.Windows.Forms.TabPage tab4;
         private System.Windows.Forms.Button b_delete;
+        private System.Windows.Forms.TabPage tab4;
+        private System.Windows.Forms.ListView lv_player;
     }
 }
 

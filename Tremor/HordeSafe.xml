@@ -94,20 +94,56 @@
 
     <location>
       <ID>11</ID>
-      <Name></Name>
-      <X></X>
-      <Y></Y>
-      <Z></Z>
-      <MAP></MAP>
+      <Name>Ratchet</Name>
+      <X>-3651.093018</X>
+      <Y>-1000.400024</Y>
+      <Z>25.67385864</Z>
+      <MAP>1</MAP>
     </location>
 
     <location>
       <ID>12</ID>
-      <Name></Name>
-      <X></X>
-      <Y></Y>
-      <Z></Z>
-      <MAP></MAP>
+      <Name>Morshun Base Camp</Name>
+      <X>-2212.824219</X>
+      <Y>1007.618286</Y>
+      <Z>92.46297455</Z>
+      <MAP>1</MAP>
+    </location>
+    
+    <location>
+      <ID>13</ID>
+      <Name>Camp Narache</Name>
+      <X>-232.1830139</X>
+      <Y>-2851.451904</Y>
+      <Z>54.04860306</Z>
+      <MAP>1</MAP>
+    </location>
+    
+    <location>
+      <ID>14</ID>
+      <Name>Read Cloud Mesa</Name>
+      <X>-152.4749298</X>
+      <Y>-3474.184814</Y>
+      <Z>107.7953644</Z>
+      <MAP>1</MAP>
+    </location>
+    
+     <location>
+      <ID>15</ID>
+      <Name>Bloodhoof Village</Name>
+      <X>-349.3004761</X>
+      <Y>-2348.066406</Y>
+      <Z>0.5026169419</Z>
+      <MAP>1</MAP>
+    </location>
+    
+     <location>
+      <ID>16</ID>
+      <Name>Palemane Rock</Name>
+      <X>455.6620789</X>
+      <Y>-2355.875977</Y>
+      <Z>56.89588165</Z>
+      <MAP>1</MAP>
     </location>
  
   </safehorde>
